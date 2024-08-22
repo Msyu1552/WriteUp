@@ -93,7 +93,7 @@ $Y- 正在启动 Docker 容器$O
 "
 docker rm -f $DKNAME 2>/dev/null
 docker image prune -f
-docker run -itd -h Yunzai --name $DKNAME -v "$DIR":/root/Yunzai --restart always $([ $DKNAME = Yunzai ]&&echo "-p2536:2536 50831:50831"||echo "-P") trss:yunzai||abort "Docker 容器启动失败"
+docker run -itd -h Yunzai --name $DKNAME -v "$DIR":/root/Yunzai --restart always $([ $DKNAME = Yunzai ]&&echo "-p2536:2536 -p50831:50831"||echo "-P") trss:yunzai||abort "Docker 容器启动失败"
 mkdir -vp "$CMDPATH"&&
 echo -n 'if [ -n "$1" ];then case "$1" in
   s|start)exec docker start '$DKNAME';;
